@@ -23,8 +23,8 @@ export class BusinessProfileComponent implements OnInit{
     this.form = new FormGroup({
       businessId: new FormControl('', [Validators.required, this.businessIdValidator]),
       title: new FormControl('', Validators.required),
-      address: new FormControl('', Validators.required),
-      instructions: new FormControl('', Validators.required)
+      // address: new FormControl('', Validators.required),
+      // instructions: new FormControl('', Validators.required)
     });
   }
 

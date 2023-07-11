@@ -23,6 +23,8 @@ import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/fo
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { AddressComponent } from './address/address.component';
+import {NgFor, AsyncPipe} from '@angular/common';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 // Import the injector module and the HTTP client module from Angular
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -30,11 +32,16 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 // Import the HTTP interceptor from the Auth0 Angular SDK
 import { AuthHttpInterceptor } from '@auth0/auth0-angular';
 
+import {FormsModule} from '@angular/forms';
+import { BusinessContactComponent } from './business-contact/business-contact.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     LoginButtonComponent,
-    BusinessProfileComponent
+    BusinessProfileComponent,
+    AddressComponent,
+    BusinessContactComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,7 +53,14 @@ import { AuthHttpInterceptor } from '@auth0/auth0-angular';
     MatIconModule,
     MatCardModule,
     SidenavComponent,
-    AddressComponent,
+    MatCardModule,
+    FormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatAutocompleteModule,
+    ReactiveFormsModule,
+    NgFor,
+    AsyncPipe,
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,

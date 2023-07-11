@@ -25,28 +25,12 @@
                 <input formControlName="title" matInput placeholder="Ingresa el nombre de la propiedad">
                 <mat-hint>Esto es similar al titulo que utilizas en otras plataformas (ej: booking o airbnb)</mat-hint>
             </mat-form-field>
-            <mat-form-field appearance="fill">
-                <mat-label>Address</mat-label>
-                <textarea formControlName="address" matInput placeholder="Enter your address"></textarea>
-            </mat-form-field>
-            <mat-form-field appearance="fill">
-                <mat-label>How to Arrive Instructions</mat-label>
-                <textarea formControlName="instructions" matInput placeholder="Enter instructions"></textarea>
-            </mat-form-field>
-            <button mat-raised-button color="primary" [disabled]="!form.valid">Guardar</button>
         </div>
     </mat-card-content>
+    <mat-card-actions align="end">
+        <button mat-button [disabled]="!form.valid">GUARDAR</button>
+        <!-- <button mat-button>SHARE</button> -->
+      </mat-card-actions>
 </mat-card>
 <app-address></app-address>
-<!-- <br>
-  <mat-card>
-    <mat-card-header>
-      <mat-card-title>Actions Buttons</mat-card-title>
-      <mat-card-subtitle>End</mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-actions align="end">
-      <button mat-button>LIKE</button>
-      <button mat-button>SHARE</button>
-    </mat-card-actions>
-  </mat-card> -->
-  
+<app-business-contact></app-business-contact>
