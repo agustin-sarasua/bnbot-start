@@ -24,6 +24,12 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { AddressComponent } from './address/address.component';
 
+// Import the injector module and the HTTP client module from Angular
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+
+// Import the HTTP interceptor from the Auth0 Angular SDK
+import { AuthHttpInterceptor } from '@auth0/auth0-angular';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,16 +50,57 @@ import { AddressComponent } from './address/address.component';
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
+    HttpClientModule,
     // Import the module into the application, with configuration
     AuthModule.forRoot({
       domain: 'dev-szxtl072nd0t8rsr.us.auth0.com',
       clientId: 'OefFo3k4jpnrEvQU9O8DHTNCxtF1ZAeV',
       authorizationParams: {
-        redirect_uri: window.location.origin
+        redirect_uri: window.location.origin,
+        
+        // Request this audience at user authentication time
+        audience: 'https://dev-szxtl072nd0t8rsr.us.auth0.com/api/v2/',
+    
+        // Request this scope at user authentication time
+        scope: 'read:current_user',
+      },
+    
+      // Specify configuration for the interceptor              
+      httpInterceptor: {
+        allowedList: [
+          {
+            // Match any request that starts 'https://dev-szxtl072nd0t8rsr.us.auth0.com/api/v2/' (note the asterisk)
+            uri: 'https://dev-szxtl072nd0t8rsr.us.auth0.com/api/v2/*',
+            tokenOptions: {
+              authorizationParams: {
+                // The attached token should target this audience
+                audience: 'https://dev-szxtl072nd0t8rsr.us.auth0.com/api/v2/',
+    
+                // The attached token should have these scopes
+                scope: 'read:current_user'
+              }
+            }
+          },
+          {
+            // Match any request that starts 'https://dev-szxtl072nd0t8rsr.us.auth0.com/api/v2/' (note the asterisk)
+            uri: 'http://localhost:8080/*',
+            tokenOptions: {
+              authorizationParams: {
+                // The attached token should target this audience
+                audience: 'https://dev-szxtl072nd0t8rsr.us.auth0.com/api/v2/',
+    
+                // The attached token should have these scopes
+                scope: 'admin'
+              }
+            }
+          }
+        ]
       }
     })
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthHttpInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
