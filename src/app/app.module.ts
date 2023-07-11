@@ -15,15 +15,20 @@ import { AuthModule } from '@auth0/auth0-angular';
 import { LoginButtonComponent } from './login-button/login-button.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
 
-import {MatSelectModule} from '@angular/material/select';
+import { MatCardModule } from '@angular/material/card';
+import { BusinessProfileComponent } from './business-profile/business-profile.component';
+
+import { ReactiveFormsModule } from '@angular/forms'; 
+import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
+import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatSidenavModule} from '@angular/material/sidenav';
-import { MatListModule } from '@angular/material/list';
+import { AddressComponent } from './address/address.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginButtonComponent
+    LoginButtonComponent,
+    BusinessProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +38,12 @@ import { MatListModule } from '@angular/material/list';
     MatToolbarModule,
     MatButtonModule, 
     MatIconModule,
+    MatCardModule,
     SidenavComponent,
+    AddressComponent,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
     // Import the module into the application, with configuration
     AuthModule.forRoot({
       domain: 'dev-szxtl072nd0t8rsr.us.auth0.com',
