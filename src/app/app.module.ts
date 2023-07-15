@@ -25,6 +25,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { AddressComponent } from './address/address.component';
 import {NgFor, AsyncPipe} from '@angular/common';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { MatSelectModule } from '@angular/material/select';
 
 // Import the injector module and the HTTP client module from Angular
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -45,6 +46,8 @@ import {
 } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { CalendarComponent } from './calendar/calendar.component';
+import { PriceConfigComponent } from './price-config/price-config.component';
+import {MatSidenavModule} from '@angular/material/sidenav';
 
 @NgModule({
   declarations: [
@@ -54,6 +57,7 @@ import { CalendarComponent } from './calendar/calendar.component';
     AddressComponent,
     BusinessContactComponent,
     CalendarComponent,
+    PriceConfigComponent,
   ],
   imports: [
     BrowserModule,
@@ -66,16 +70,16 @@ import { CalendarComponent } from './calendar/calendar.component';
     MatCardModule,
     SidenavComponent,
     MatCardModule,
+    MatSidenavModule,
     FormsModule,
     MatFormFieldModule,
     MatInputModule,
     MatAutocompleteModule,
+    MatSelectModule,
     ReactiveFormsModule,
     NgFor,
     AsyncPipe,
     ReactiveFormsModule,
-    MatFormFieldModule,
-    MatInputModule,
     HttpClientModule,
     // Import the module into the application, with configuration
     AuthModule.forRoot({
