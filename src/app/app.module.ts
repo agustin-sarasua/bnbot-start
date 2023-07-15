@@ -37,6 +37,7 @@ import {FormsModule} from '@angular/forms';
 import { BusinessContactComponent } from './business-contact/business-contact.component';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { EventColor } from 'calendar-utils';
+import {MatDividerModule} from '@angular/material/divider';
 // import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import {
   CalendarEvent,
@@ -48,6 +49,8 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { CalendarComponent } from './calendar/calendar.component';
 import { PriceConfigComponent } from './price-config/price-config.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
+import { CalendarSelectionComponent } from './calendar-selection/calendar-selection.component';
+import {MatChipsModule} from '@angular/material/chips';
 
 @NgModule({
   declarations: [
@@ -58,6 +61,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
     BusinessContactComponent,
     CalendarComponent,
     PriceConfigComponent,
+    CalendarSelectionComponent,
   ],
   imports: [
     BrowserModule,
@@ -67,6 +71,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
     MatToolbarModule,
     MatButtonModule, 
     MatIconModule,
+    MatDividerModule,
     MatCardModule,
     SidenavComponent,
     MatCardModule,
@@ -74,6 +79,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
     FormsModule,
     MatFormFieldModule,
     MatInputModule,
+    MatChipsModule,
     MatAutocompleteModule,
     MatSelectModule,
     ReactiveFormsModule,
