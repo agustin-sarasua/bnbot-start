@@ -34,6 +34,17 @@ import { AuthHttpInterceptor } from '@auth0/auth0-angular';
 
 import {FormsModule} from '@angular/forms';
 import { BusinessContactComponent } from './business-contact/business-contact.component';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { EventColor } from 'calendar-utils';
+// import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import {
+  CalendarEvent,
+  CalendarEventAction,
+  CalendarEventTimesChangedEvent,
+  CalendarView,
+} from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { CalendarComponent } from './calendar/calendar.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +53,7 @@ import { BusinessContactComponent } from './business-contact/business-contact.co
     BusinessProfileComponent,
     AddressComponent,
     BusinessContactComponent,
+    CalendarComponent,
   ],
   imports: [
     BrowserModule,
@@ -110,7 +122,8 @@ import { BusinessContactComponent } from './business-contact/business-contact.co
           }
         ]
       }
-    })
+    }),
+    CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory })
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthHttpInterceptor, multi: true },

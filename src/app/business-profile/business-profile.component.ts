@@ -9,6 +9,7 @@ import { HttpClient } from '@angular/common/http';
 import { AuthService } from '@auth0/auth0-angular';
 
 import {BackendService} from '../backend.service'
+import { GlobalService } from '../global.service';
 
 @Component({
   selector: 'app-business-profile',
@@ -19,34 +20,15 @@ export class BusinessProfileComponent implements OnInit{
   form: FormGroup;
   metadata = {};
 
-  constructor(public auth: AuthService, private http: HttpClient, public backend: BackendService) {
+  constructor(public auth: AuthService, private http: HttpClient, public backend: BackendService, public global: GlobalService) {
     this.form = new FormGroup({
       businessId: new FormControl('', [Validators.required, this.businessIdValidator]),
       title: new FormControl('', Validators.required),
-      // address: new FormControl('', Validators.required),
-      // instructions: new FormControl('', Validators.required)
     });
   }
 
   ngOnInit(): void {
-    this.auth.user$
-    .pipe(
-      concatMap((user) =>
-        // Use HttpClient to make the call
-        this.http.get(
-          encodeURI(`https://dev-szxtl072nd0t8rsr.us.auth0.com/api/v2/users/${user?.sub}`)
-        )
-      ),
-      map((user: any) => user.user_metadata),
-      tap((meta) => (this.metadata = meta))
-    )
-    .subscribe();
-
-    this.backend.getBusinessInfo().subscribe(data => {
-      console.log(data);
-    }, error => {
-      console.error('Error:', error);
-    });
+    console.log(this.global.getBusiness());
   }
 
   businessIdValidator(control: AbstractControl): { [key: string]: boolean } | null {

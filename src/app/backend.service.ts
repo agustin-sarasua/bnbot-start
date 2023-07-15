@@ -14,4 +14,5 @@ export class BackendService {
   getBusinessInfo(): Observable<any> {
     return this.http.get(`${this.API_URL}/business`);
   }
+
 }
