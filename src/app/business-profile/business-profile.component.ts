@@ -74,9 +74,9 @@ export class BusinessProfileComponent implements OnInit{
   }
 
   private setupForm(): void {
-    this.form = new FormGroup({
-      bnbot_id: new FormControl(this.business?.bnbot_id, [Validators.required, this.bnbotValidator]),
-      business_name: new FormControl(this.business?.business_name, Validators.required),
+    this.form.patchValue({
+      bnbot_id: this.business?.bnbot_id,
+      business_name: this.business?.business_name
     });
   }
 
@@ -86,7 +86,7 @@ export class BusinessProfileComponent implements OnInit{
   }
 
   bnbotValidator(control: AbstractControl): { [key: string]: boolean } | null {
-    const valid = /^[a-zA-Z0-9.-]+$/.test(control.value);
-    return valid ? null : { 'businessIdInvalid': true };
+    const valid = /^[@a-zA-Z0-9.-]+$/.test(control.value);
+    return valid ? null : { 'bnbotIdInvalid': true };
   }
 }
