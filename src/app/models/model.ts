@@ -52,7 +52,7 @@ export interface Property {
 
 export interface Business {
     id?: string;
-    user_id: string;
+    user_id?: string;
     bnbot_id?: string;
     business_name?: string;
     description?: string;

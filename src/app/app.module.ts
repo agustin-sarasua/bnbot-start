@@ -51,6 +51,7 @@ import { PriceConfigComponent } from './price-config/price-config.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { CalendarSelectionComponent } from './calendar-selection/calendar-selection.component';
 import {MatChipsModule} from '@angular/material/chips';
+import { OverlayModule } from '@angular/cdk/overlay';
 
 @NgModule({
   declarations: [
@@ -78,6 +79,7 @@ import {MatChipsModule} from '@angular/material/chips';
     MatSidenavModule,
     FormsModule,
     MatFormFieldModule,
+    OverlayModule,
     MatInputModule,
     MatChipsModule,
     MatAutocompleteModule,

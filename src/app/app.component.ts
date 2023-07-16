@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
 import { concatMap, tap, map } from 'rxjs/operators';
 
@@ -17,18 +17,24 @@ import { GlobalService } from './global.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
+
+  @ViewChild('loadingOverlay') loadingOverlayTemplate!: TemplateRef<any>;
+
   title = 'bnbot-start';
   metadata = {};
 
   constructor(public auth: AuthService, private http: HttpClient, public backend: BackendService, public global: GlobalService){}
 
+
   ngOnInit() {
+    this.global.init(this.loadingOverlayTemplate);
+
     this.auth.isAuthenticated$.subscribe(loggedIn => {
       if (loggedIn) {
         this.backend.getBusinessInfo().subscribe({
           next: (data) => {
             console.log(data);
-            this.global.setBusiness(data);
+            // this.global.setBusiness(data);
           },
           error: (error) => {
             console.error('Error:', error);

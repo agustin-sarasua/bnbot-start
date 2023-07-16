@@ -1,7 +1,7 @@
 <mat-card class="my-card">
     <mat-card-header>
       <mat-card-title>Contacto</mat-card-title>
-      <mat-card-subtitle>Quien esta encargado/a?.</mat-card-subtitle>
+      <!-- <mat-card-subtitle>Quien esta encargado/a?.</mat-card-subtitle> -->
     </mat-card-header>
     <mat-card-content>
         <div [formGroup]="form" class="example-container">
@@ -20,7 +20,7 @@
         </div>
     </mat-card-content>
     <mat-card-actions align="end">
-        <button mat-button [disabled]="!form.valid">GUARDAR</button>
+        <button mat-button [disabled]="!form.valid" (click)="saveForm()">GUARDAR</button>
         <!-- <button mat-button>SHARE</button> -->
       </mat-card-actions>
 </mat-card>
