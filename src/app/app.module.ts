@@ -52,6 +52,10 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import { CalendarSelectionComponent } from './calendar-selection/calendar-selection.component';
 import {MatChipsModule} from '@angular/material/chips';
 import { OverlayModule } from '@angular/cdk/overlay';
+import { CreatePropertyComponent } from './create-property/create-property.component';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { ListPropertiesComponent } from './list-properties/list-properties.component';
 
 @NgModule({
   declarations: [
@@ -63,11 +67,15 @@ import { OverlayModule } from '@angular/cdk/overlay';
     CalendarComponent,
     PriceConfigComponent,
     CalendarSelectionComponent,
+    CreatePropertyComponent,
+    ListPropertiesComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    MatNativeDateModule,
+    MatDatepickerModule,
     MatSlideToggleModule,
     MatToolbarModule,
     MatButtonModule, 

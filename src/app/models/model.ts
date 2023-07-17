@@ -40,10 +40,14 @@ export interface CalendarLink {
 }
 
 export interface Property {
-    property_id?: string;
+    id?: string;
     name?: string;
     calendar_config?: CalendarConfig;
     calendar_links?: CalendarLink[];
+    booking_link?: string;
+    airbnb_link?: string;
+    checkin_time?: string;
+    checkout_time?: string;
     description?: string;
     amenities?: string[];
     max_guests?: number;
