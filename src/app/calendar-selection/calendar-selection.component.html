@@ -1,15 +1,16 @@
 <mat-card class="my-card">
     <mat-card-header>
-      <mat-card-title>Modificar Días</mat-card-title>
+      <mat-card-title>Modificar {{selectedDays.length}} Días</mat-card-title>
     </mat-card-header>
   
     <mat-card-content>
         <div [formGroup]="form" class="example-container">
-            
-            <mat-chip-listbox aria-label="Fish selection">
-                <mat-chip-option color="accent" selected>Disponible</mat-chip-option>
+            <mat-label>Quieres que este disponible para que clientes puedan reservar?</mat-label>
+            <mat-chip-listbox formControlName="selectedDayStatus" aria-label="Fish selection">
+                <mat-chip-option color="accent">Disponible</mat-chip-option>
                 <mat-chip-option color="warn">No Disponible</mat-chip-option>
             </mat-chip-listbox>
+            <mat-hint> NOTA: NO estará disponible si existen reservas en otras plataformas (e.g: booking).</mat-hint>
             <mat-divider></mat-divider>
             <mat-form-field floatLabel="always">
                 <mat-label>Precio</mat-label>

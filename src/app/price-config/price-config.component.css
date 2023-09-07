@@ -1,9 +1,9 @@
 .my-card {
-    width: 300px;
+    width: 350px;
     margin: 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
-  
+
   .example-container {
     display: flex;
     flex-direction: column;

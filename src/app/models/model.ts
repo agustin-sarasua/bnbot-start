@@ -19,14 +19,18 @@ export interface PaymentOption {
     instructions?: string;
 }
 
-export interface CalendarConfig {
-    currency?: string;
-    base_price?: number;
-    weekend_price?: number;
-    special_day_prices?: { [key: string]: number };
-    extra_per_person?: number;
-    open_days?: Date[];
+export interface PriceConfig {
+    currency?: string; // Optional property
+    base_price?: number; // Optional property
+    weekend_price?: number; // Optional property
+    extra_per_person?: number; // Optional property
 }
+  
+export interface PriceExceptionConfig {
+    day: Date; // Use Date for date type
+    price: number;
+}
+  
 
 export interface DayConfig {
     date: Date;
@@ -42,7 +46,11 @@ export interface CalendarLink {
 export interface Property {
     id?: string;
     name?: string;
-    calendar_config?: CalendarConfig;
+    
+    price_config?: PriceConfig;
+    price_exceptions?: PriceExceptionConfig[];
+    days_open?: Date[];
+
     calendar_links?: CalendarLink[];
     booking_link?: string;
     airbnb_link?: string;
@@ -66,6 +74,11 @@ export interface Business {
     payment_options?: PaymentOption[];
     how_to_arrive_instructions?: string;
     properties?: Property[];
+}
+
+export interface UpdateOpenDays {
+    action: string;
+    days: string[];
 }
 
 export interface LoadBusinesses {

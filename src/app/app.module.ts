@@ -56,6 +56,7 @@ import { CreatePropertyComponent } from './create-property/create-property.compo
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { ListPropertiesComponent } from './list-properties/list-properties.component';
+import { OpenDaysComponent } from './open-days/open-days.component';
 
 @NgModule({
   declarations: [
@@ -69,6 +70,7 @@ import { ListPropertiesComponent } from './list-properties/list-properties.compo
     CalendarSelectionComponent,
     CreatePropertyComponent,
     ListPropertiesComponent,
+    OpenDaysComponent,
   ],
   imports: [
     BrowserModule,
